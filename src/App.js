@@ -48,24 +48,26 @@ function App() {
       <h1 className="text-center"  id="title">Weather Report</h1>
       <div className="row">
         {countriesData.map((country) => (
-          <div className="col-12 col-lg-4">
-            <div className="card firstCard whiteColour" id="card">
-              <div className="card-header bg-dark ">
-                <h1 className="text-center card-title " >
+          <div className="col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <div className="card firstCard whiteColour">
+              <div className="card-header  ">
+                <h1 className="text-center card-title bg-dark " >
                   {country.name.common}
                 </h1>
-              </div>
-              <div className="card-body  ">
                 <img
-                  className="card-img"
+                  className="card-img-top"
                   src={country.flags.png}
                   alt="Card image"
                 />
+              </div>
+              <div className="card-body ">
                 <br />
                 <br />
+                <div className="card-text">
                 <p>Capital: {country.capital}</p>
                 <p>Region: {country.region}</p>
                 <p>Country Code: {country.cca3}</p>
+                </div>
                 <button
                   type="button"
                   className="btn btn-outline-light "

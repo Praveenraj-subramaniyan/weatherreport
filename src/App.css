@@ -11,7 +11,7 @@
   background: linear-gradient(to right, gainsboro, grey);
 }
 .card-img {
-  height: 200px;
+  
 }
 .container {
   background-color: cadetblue;
@@ -32,4 +32,16 @@ body p{
 }
 #weather{
   margin-top: 10px;
+}
+.card-header{
+ padding: 0px;
+ border: 0px;
+ background: linear-gradient(to right, gainsboro, grey);
+}
+.card-header img{
+  width: 90%;
+  height: 200px;
+}
+.card-body{
+  padding: 0px;
 }
