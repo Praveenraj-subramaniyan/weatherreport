@@ -1,22 +1,25 @@
-.firstCard{
+.firstCard {
   margin-top: 15px;
   text-align: center;
   width: 100%;
   height: 600px;
 }
-.whiteColour{
+.whiteColour {
   color: white;
 }
-.card-body{
-  background: linear-gradient(to right,gainsboro,grey);
+.card-body {
+  background: linear-gradient(to right, gainsboro, grey);
 }
- .card-img{
+.card-img {
   height: 200px;
 }
-.container-fluid{
+.container {
   background-color: cadetblue;
 }
-.row{
+body{
+  background-color: cadetblue;
+}
+.row {
   background-color: cadetblue;
 }
 /* @media (min-width : 850px){

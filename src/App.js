@@ -3,8 +3,10 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 
 function App() {
-  const [weatherData, setWeatherData] = useState([]);
+  
   const [countriesData, setcountriesData] = useState([]);
+  const [weatherData, setWeatherData] = useState({});
+  const [showWeatherReport, setshowWeatherReport] = useState([]);
   useEffect(() => {
     fetchcountriesData();
   }, []);
@@ -27,25 +29,30 @@ function App() {
       .catch((error) => console.log(error));
   }
 
-    function fetchweatherData(latlng) {
-      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latlng[0]}&lon=${latlng[1]}&appid=12f4cfff5cf2766bc4f975fdc6c3b200`)
-        .then((response) => response.json())
-        .then((data) => {
-          setWeatherData(data);
-        })
-        .catch((error) => console.log(error));
-        console.log(weatherData);
-    }
- 
+  function fetchweatherData(latlng,country) {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latlng[0]}&lon=${latlng[1]}&appid=12f4cfff5cf2766bc4f975fdc6c3b200`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setWeatherData(data);
+      })
+      .catch((error) => console.log(error));
+      setshowWeatherReport((prevShowWeatherReport) => ({
+        [country]: true
+      }));
+  }
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         {countriesData.map((country) => (
           <div className="col-sm-4">
             <div className="card firstCard whiteColour">
               <div className="card-header bg-dark ">
-                <h4 className="card-title ">{country.name.common}</h4>
+                <h1 className="text-center card-title  " id="title">
+                  {country.name.common}
+                </h1>
               </div>
               <div className="card-body  ">
                 <img
@@ -58,20 +65,21 @@ function App() {
                 <p>Capital: {country.capital}</p>
                 <p>Region: {country.region}</p>
                 <p>Country Code: {country.cca3}</p>
-                <button type="button" className="btn btn-outline-light " onClick={() =>fetchweatherData(country.latlng)}>
+                <button
+                  type="button"
+                  className="btn btn-outline-light "
+                  onClick={() => fetchweatherData(country.latlng,country.cca3)}
+                >
                   Click for weather
                 </button>
-                {/* <div className="weatherReport ">
-                  <div className="row">
-                    <div className="col-sm-4"></div>
-                    <div className="col-sm-4"></div>
-                    <div className="col-sm-4"></div>
-                    <div className="col-sm-4"></div>
-                    <div className="col-sm-4"></div>
-                    <div className="col-sm-4"></div>
-                    <div className="col-sm-4"></div>
-                  </div>
-                </div> */}
+                {showWeatherReport[country.cca3] ===true &&
+                  weatherData.weather &&  (
+                    <div className="weatherReport">
+                      <h3>Weather Report</h3>
+                      {/* <p>Current temperature: {weatherData.weather["0"].main.temp} K</p> */}
+                      <p>Weather: {weatherData.weather["0"].main}</p>
+                    </div>
+                  )}
               </div>
             </div>
           </div>
