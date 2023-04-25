@@ -38,7 +38,7 @@ function App() {
         setWeatherData(data);
       })
       .catch((error) => console.log(error));
-      setshowWeatherReport((prevShowWeatherReport) => ({
+      setshowWeatherReport(() => ({
         [country]: true
       }));
   }
