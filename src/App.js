@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 function App() {
   
   const [countriesData, setcountriesData] = useState([]);
-  const [weatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState([ ]);
   const [showWeatherReport, setshowWeatherReport] = useState([]);
   useEffect(() => {
     fetchcountriesData();
@@ -45,12 +45,13 @@ function App() {
 
   return (
     <div className="container">
+      <h1 className="text-center"  id="title">Weather Report</h1>
       <div className="row">
         {countriesData.map((country) => (
-          <div className="col-sm-4">
-            <div className="card firstCard whiteColour">
+          <div className="col-12 col-lg-4">
+            <div className="card firstCard whiteColour" id="card">
               <div className="card-header bg-dark ">
-                <h1 className="text-center card-title  " id="title">
+                <h1 className="text-center card-title " >
                   {country.name.common}
                 </h1>
               </div>
@@ -75,9 +76,11 @@ function App() {
                 {showWeatherReport[country.cca3] ===true &&
                   weatherData.weather &&  (
                     <div className="weatherReport">
-                      <h3>Weather Report</h3>
                       {/* <p>Current temperature: {weatherData.weather["0"].main.temp} K</p> */}
-                      <p>Weather: {weatherData.weather["0"].main}</p>
+                      <p id="weather">Weather: {weatherData.weather["0"].main}</p>
+                      <p>Description: {weatherData.weather["0"].description}</p>
+                      <p>Minimum Temperature: {(weatherData.main.temp_min - 273.15).toFixed(2)} &deg;C</p>
+                      <p>Maximun Temperature: {(weatherData.main.temp_max - 273.15).toFixed(2)} &deg;C</p>
                     </div>
                   )}
               </div>

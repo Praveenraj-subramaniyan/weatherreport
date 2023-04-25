@@ -27,3 +27,9 @@ body{
     
   }
 } */
+body p{
+  margin-bottom: 7px;
+}
+#weather{
+  margin-top: 10px;
+}
