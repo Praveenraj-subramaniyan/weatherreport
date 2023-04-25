@@ -49,7 +49,7 @@ function App() {
       <div className="row">
         {countriesData.map((country) => (
           <div className="col-sm-6 col-md-4 col-lg-4 col-xl-4">
-            <div className="card firstCard whiteColour">
+            <div className="card firstCard whiteColour h-100">
               <div className="card-header  ">
                 <h1 className="text-center card-title bg-dark " >
                   {country.name.common}
@@ -78,7 +78,6 @@ function App() {
                 {showWeatherReport[country.cca3] ===true &&
                   weatherData.weather &&  (
                     <div className="weatherReport">
-                      {/* <p>Current temperature: {weatherData.weather["0"].main.temp} K</p> */}
                       <p id="weather">Weather: {weatherData.weather["0"].main}</p>
                       <p>Description: {weatherData.weather["0"].description}</p>
                       <p>Minimum Temperature: {(weatherData.main.temp_min - 273.15).toFixed(2)} &deg;C</p>
